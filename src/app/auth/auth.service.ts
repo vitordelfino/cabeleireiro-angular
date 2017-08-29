@@ -27,16 +27,18 @@ export class AuthService {
 
       console.log(user);
 
-      this._http
+      let promisse = this._http
         .post('https://cabeleireiro-api.herokuapp.com/login/logar', user)
         .map(res => res.json())
         .toPromise()
-        .then(usuario => {
+
+        promisse.then(usuario => {
           this.loggedIn.next(true);
           this.router.navigate(['/agendamento']);
         })
         .catch(erro => console.log("errado"));
 
+        return promisse;
 
     }
   }

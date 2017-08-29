@@ -11,6 +11,8 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
   private formSubmitAttempt: boolean;
+  private loading: boolean = false;
+  private loginError: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -32,8 +34,17 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loading = true;
+    this.loginError = false;
     if (this.form.valid) {
-      this.authService.login(this.form.value);
+      this.authService
+        .login(this.form.value)
+        .then()
+        .catch(erro => {
+          this.loading = false
+          this.loginError = true;
+          this.ngOnInit();
+        });
     }
     this.formSubmitAttempt = true;
   }
