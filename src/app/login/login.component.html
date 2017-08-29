@@ -1,0 +1,34 @@
+<div class="conteudo">
+  <md-card>
+      <md-card-content>
+
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+          <h4>Por favor, realize login para continuar !</h4>
+
+          <md-input-container floatPlaceholder="auto" class="full-width-input">
+              <input mdInput placeholder="Usuario" formControlName="usuario" required>
+              <md-error *ngIf="isFieldInvalid('usuario')">
+                Por favor informe o usuário
+              </md-error>
+          </md-input-container>
+
+          <md-input-container floatPlaceholder="auto" class="full-width-input">
+              <input mdInput formControlName="senha" type="password"  placeholder="Senha" required >
+              <md-error *ngIf="isFieldInvalid('senha')">
+                Por favor informe a senha
+              </md-error>
+          </md-input-container>
+
+          <button md-raised-button color="primary" type="submit">Logar</button>
+        </form>
+
+      </md-card-content>
+
+  </md-card>
+
+
+
+</div>
+
