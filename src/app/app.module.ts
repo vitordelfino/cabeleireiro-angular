@@ -1,3 +1,4 @@
+import { ServicoService } from './servico/servico.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/take';
@@ -32,7 +33,7 @@ import { HorarioService } from './horario/horario.service';
     ReactiveFormsModule,
     HttpModule,
   ],
-  providers: [AuthService, AuthGuard, HorarioService],
+  providers: [AuthService, AuthGuard, HorarioService, ServicoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

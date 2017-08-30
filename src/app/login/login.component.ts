@@ -10,9 +10,9 @@ import { AuthService } from './../auth/auth.service';
 export class LoginComponent implements OnInit {
 
   form: FormGroup;
-  private formSubmitAttempt: boolean;
-  private loading: boolean = false;
-  private loginError: boolean = false;
+  formSubmitAttempt: boolean;
+  loading: boolean = false;
+  loginError: boolean = false;
 
   constructor(
     private fb: FormBuilder,

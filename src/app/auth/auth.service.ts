@@ -26,9 +26,9 @@ export class AuthService {
 
 
       console.log(user);
-
+      //'https://cabeleireiro-api.herokuapp.com/login/logar'
       let promisse = this._http
-        .post('https://cabeleireiro-api.herokuapp.com/login/logar', user)
+        .post('http://localhost:3000/login/logar', user)
         .map(res => res.json())
         .toPromise()
 

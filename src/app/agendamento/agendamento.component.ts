@@ -1,3 +1,5 @@
+import { ServicoService } from './../servico/servico.service';
+import { Servico } from './../servico/servico';
 import { HorarioService } from './../horario/horario.service';
 import { Component, OnInit } from '@angular/core';
 import { Horario } from '../horario/horario';
@@ -13,20 +15,18 @@ export class AgendamentoComponent implements OnInit {
   maxDate: Date;
   dtAgendamento: Date = new Date();
   horarios: Array<Horario> = [];
-
-  type: string = 'brand';
-  size: string = 'large';
-
-  loading: boolean = true;
-
+  servicos: Array<Servico> = [];
+  loading: boolean = false;
   constructor(
-    private _horarioService: HorarioService
+    private _horarioService: HorarioService,
+    private _servicoService: ServicoService
   ) { }
 
   ngOnInit() {
     this.minDate = new Date();
     this.maxDate = new Date(this.minDate.getTime() + 604800000);
     this.buscarAgendamento(this.dtAgendamento);
+    this.buscarServicos();
   }
 
 
@@ -44,15 +44,29 @@ export class AgendamentoComponent implements OnInit {
 
   private buscarAgendamento(dt: Date){
     this.loading = true;
-
     this._horarioService
       .findHorarioDisponicel(this.formatDate(dt))
       .then(horarios =>{
-
         this.horarios = horarios;
-
+        this.loading = false;
       })
-      .catch(erro => console.log(erro));
+      .catch(erro => {
+        console.log(erro);
+        this.loading = false;
+      });
+  }
+
+  private buscarServicos(){
+    this.loading = true;
+    this._servicoService
+      .find()
+      .then(servicos => {
+        this.servicos = servicos;
+        this.loading = false;
+      }).catch(erro => {
+        console.log(erro);
+        this.loading = false;
+      })
   }
 
   onClick(){
