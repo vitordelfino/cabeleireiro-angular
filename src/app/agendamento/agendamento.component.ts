@@ -25,7 +25,7 @@ export class AgendamentoComponent implements OnInit {
   ngOnInit() {
     this.minDate = new Date();
     this.maxDate = new Date(this.minDate.getTime() + 604800000);
-    this.buscarAgendamento(this.dtAgendamento);
+    this.buscarHorariosDisponiveis(this.dtAgendamento);
     this.buscarServicos();
   }
 
@@ -42,7 +42,7 @@ export class AgendamentoComponent implements OnInit {
     return [year, month, day].join('-');
   }
 
-  private buscarAgendamento(dt: Date){
+  private buscarHorariosDisponiveis(dt: Date){
     this.loading = true;
     this._horarioService
       .findHorarioDisponicel(this.formatDate(dt))
@@ -74,11 +74,6 @@ export class AgendamentoComponent implements OnInit {
   }
 
   changeDate(date){
-    this.buscarAgendamento(date._selected);
+    this.buscarHorariosDisponiveis(date._selected);
   }
-
-
-
-
-
 }
