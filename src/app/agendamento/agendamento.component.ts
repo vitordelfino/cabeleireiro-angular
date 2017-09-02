@@ -1,3 +1,5 @@
+import { AgendamentoService } from './agendamento.service';
+import { AuthService } from './../auth/auth.service';
 import { ServicoService } from './../servico/servico.service';
 import { Servico } from './../servico/servico';
 import { HorarioService } from './../horario/horario.service';
@@ -17,9 +19,15 @@ export class AgendamentoComponent implements OnInit {
   horarios: Array<Horario> = [];
   servicos: Array<Servico> = [];
   loading: boolean = false;
+
+  horario: Horario;
+  servico: Servico;
+
   constructor(
     private _horarioService: HorarioService,
-    private _servicoService: ServicoService
+    private _servicoService: ServicoService,
+    private _authService: AuthService,
+    private _agendamentoService: AgendamentoService
   ) { }
 
   ngOnInit() {
@@ -27,8 +35,34 @@ export class AgendamentoComponent implements OnInit {
     this.maxDate = new Date(this.minDate.getTime() + 604800000);
     this.buscarHorariosDisponiveis(this.dtAgendamento);
     this.buscarServicos();
+
   }
 
+
+
+  onSubmit() {
+    this.loading = true;
+
+    let agendamento = {
+      "cliente": this._authService.userLogged.cpf,
+      "servico": this.servico.id,
+      "dt_agendamento": this.formatDate(this.dtAgendamento),
+      "hr_agendamento": this.horario.id
+    }
+    this.loading = true;
+    console.log(agendamento);
+
+    this._agendamentoService
+      .salva(agendamento)
+      .subscribe(
+        resposta => this.loading = false,
+        erro => {
+          console.log(erro);
+          this.loading = false;
+        }
+      )
+
+  }
 
   private formatDate(dt: Date){
     var d = new Date(dt),

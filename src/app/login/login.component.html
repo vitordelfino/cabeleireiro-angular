@@ -1,8 +1,10 @@
 <div class="conteudo">
 
-  <div *ngIf="loading">
-    <md-progress-spinner mode="indeterminate" color="primary" ></md-progress-spinner>
+  <div class="loading">
+      <md-progress-bar *ngIf="loading" mode="indeterminate" color="primary" ></md-progress-bar>
   </div>
+
+
 
   <md-card>
       <md-card-content>

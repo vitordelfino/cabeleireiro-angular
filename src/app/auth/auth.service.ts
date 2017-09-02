@@ -3,14 +3,20 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { User } from './user';
 import { Http } from '@angular/http';
+import { Cliente } from '../cliente/cliente';
 
 @Injectable()
 export class AuthService {
 
   private loggedIn = new BehaviorSubject<boolean>(false);
+  private _cliente: Cliente;
 
   get isLoggedIn() {
     return this.loggedIn.asObservable();
+  }
+
+  get userLogged(): Cliente{
+    return this._cliente;
   }
 
   constructor(
@@ -34,6 +40,7 @@ export class AuthService {
 
         promisse.then(usuario => {
           this.loggedIn.next(true);
+          this._cliente = usuario.cliente;
           this.router.navigate(['/agendamento']);
         })
         .catch(erro => console.log("errado"));

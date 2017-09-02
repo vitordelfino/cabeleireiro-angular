@@ -1,7 +1,7 @@
 
 md-card {
   text-align: center;
-  margin: 2em auto;
+  margin: auto;
   max-width: 400px
 }
 
@@ -14,9 +14,13 @@ md-card-title {
 }
 
 md-progress-spinner {
-  width: 50px;
-  height: 50px;
-  margin: 0 45% 0 45%;
+  width: 400px;
+  margin: auto;
+}
+
+.loading {
+  max-width: 400px;
+  margin: auto;
 }
 
 
