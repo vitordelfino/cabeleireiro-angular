@@ -1,0 +1,21 @@
+<div class="conteudo">
+
+
+  <div  class="loading">
+    <md-progress-bar *ngIf="loading" mode="indeterminate" color="primary" ></md-progress-bar>
+  </div>
+
+
+  <div class="card" *ngFor="let agendamento of agendamentos">
+    <md-expansion-panel [hideToggle]="false">
+        <md-expansion-panel-header>
+            <mat-panel-title>{{ agendamento.servico }}</mat-panel-title>
+            <mat-panel-description>{{ agendamento.str_data }}</mat-panel-description>
+        </md-expansion-panel-header>
+        <p md-line>Serviço: {{ agendamento.servico }}</p>
+        <p md-line>Data: {{ agendamento.str_data }}</p>
+        <p md-line>Horario: {{ agendamento.horario }}</p>
+    </md-expansion-panel>
+  </div>
+
+</div>

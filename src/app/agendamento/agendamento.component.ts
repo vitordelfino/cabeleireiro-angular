@@ -55,7 +55,10 @@ export class AgendamentoComponent implements OnInit {
     this._agendamentoService
       .salva(agendamento)
       .subscribe(
-        resposta => this.loading = false,
+        resposta => {
+          this.loading = false;
+          this.buscarHorariosDisponiveis(new Date());
+        },
         erro => {
           console.log(erro);
           this.loading = false;

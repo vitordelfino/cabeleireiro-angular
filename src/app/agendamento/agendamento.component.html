@@ -21,25 +21,30 @@
               </md-input-container>
               <md-datepicker (selectedChanged)="changeDate(picker)" touchUi="true" #picker></md-datepicker>
 
-              <md-select
-                name="servico"
-                placeholder="Escolha um servico"
-                [(ngModel)]="servico"
-                class="full-width option-max-width input-text" required>
-                  <md-option *ngFor="let servico of servicos" [value]="servico" class="full-width input-text">
-                    {{ servico.descricao }}
-                  </md-option>
-              </md-select>
+              <div>
 
-              <md-select
-                name="horario"
-                placeholder="Escolha um horário"
-                [(ngModel)]="horario"
-                class="full-width option-max-width input-text" required>
-                  <md-option *ngFor="let horario of horarios" [value]="horario" class="full-width input-text">
-                    {{ horario.horario }}
-                  </md-option>
-              </md-select>
+                <md-select
+                  name="servico"
+                  placeholder="Escolha um servico"
+                  [(ngModel)]="servico"
+                  class="full-width option-max-width input-text"
+                  required>
+                    <md-option *ngFor="let servico of servicos" [value]="servico" class="full-width input-text">
+                      {{ servico.descricao }}
+                    </md-option>
+                </md-select>
+
+                <md-select
+                  name="horario"
+                  placeholder="Escolha um horário"
+                  [(ngModel)]="horario"
+                  class="full-width option-max-width input-text"
+                  required>
+                    <md-option *ngFor="let horario of horarios" [value]="horario" class="full-width input-text">
+                      {{ horario.horario }}
+                    </md-option>
+                </md-select>
+              </div>
 
             <button md-raised-button color="primary" [disabled]="!hora && !servico">Agendar</button>
           </form>

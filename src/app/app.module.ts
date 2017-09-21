@@ -19,13 +19,16 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/catch';
+import { MeusAgendamentosComponent } from './meus-agendamentos/meus-agendamentos.component';
+import { MeusAgendamentosService } from './meus-agendamentos/meus-agendamentos.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AppToolbarComponent,
-    AgendamentoComponent
+    AgendamentoComponent,
+    MeusAgendamentosComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,7 @@ import 'rxjs/add/operator/catch';
     ReactiveFormsModule,
     HttpModule,
   ],
-  providers: [AuthService, AuthGuard, HorarioService, ServicoService, AgendamentoService],
+  providers: [AuthService, AuthGuard, HorarioService, ServicoService, AgendamentoService, MeusAgendamentosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

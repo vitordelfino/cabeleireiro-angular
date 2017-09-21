@@ -1,0 +1,19 @@
+
+md-expansion-panel {
+  text-align: center;
+  margin: auto;
+  max-width: 700px;
+}
+
+.card {
+  padding-bottom: 3%;
+}
+
+.loading {
+  max-width: 700px;
+  margin: auto;
+}
+
+.full-width {
+  width: 100%
+}

@@ -4,7 +4,8 @@
 
   <span class="fill-remaining-space"></span>
   <div fxLayout="row" fxShow="false" fxShow.gt-sm>
-      <button md-button routerLink="/agendamento">Agendamentos</button>
+      <button md-button routerLink="/agendamento">Agendar</button>
+      <button md-button routerLink="/meus-agendamentos">Meus Agendamentos</button>
       <button md-button (click)="onLogout()" *ngIf="isLoggedIn$">deslogar</button>
   </div>
   <button md-button [md-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
@@ -16,6 +17,7 @@
 
 <md-menu x-position="before" #menu="mdMenu">
 <button md-menu-item routerLink="/agendamento">Agendamentos</button>
+<button md-menu-item routerLink="/meus-agendamentos">Meus Agendamentos</button>
 <button md-menu-item (click)="onLogout()" *ngIf="isLoggedIn$">deslogar</button>
 <!--<button md-menu-item>Help</button>-->
 </md-menu>
