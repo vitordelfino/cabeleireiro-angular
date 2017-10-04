@@ -3,6 +3,7 @@ md-expansion-panel {
   text-align: center;
   margin: auto;
   max-width: 700px;
+  /* padding-bottom: 3%; */
 }
 
 .card {
@@ -16,4 +17,9 @@ md-expansion-panel {
 
 .full-width {
   width: 100%
+}
+
+.btn-cancelar {
+  width: 50%;
+  font-weight: bold;
 }

@@ -6,6 +6,8 @@ export class Agendamento {
     public data: Date,
     public horario: string,
     public str_data: string,
+    public status: string,
+    public observacao: string
   ){ }
 
 

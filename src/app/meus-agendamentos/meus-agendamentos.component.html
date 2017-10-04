@@ -6,16 +6,50 @@
   </div>
 
 
-  <div class="card" *ngFor="let agendamento of agendamentos">
-    <md-expansion-panel [hideToggle]="false">
-        <md-expansion-panel-header>
-            <mat-panel-title>{{ agendamento.servico }}</mat-panel-title>
-            <mat-panel-description>{{ agendamento.str_data }}</mat-panel-description>
-        </md-expansion-panel-header>
-        <p md-line>Serviço: {{ agendamento.servico }}</p>
-        <p md-line>Data: {{ agendamento.str_data }}</p>
-        <p md-line>Horario: {{ agendamento.horario }}</p>
-    </md-expansion-panel>
-  </div>
+  <!-- <div class="card"> -->
+
+    <md-list>
+      <h2 md-subheader> Hoje </h2>
+        <md-expansion-panel [hideToggle]="false" *ngFor="let agendamento of agendamentosHoje">
+            <md-expansion-panel-header>
+                <mat-panel-title>{{ agendamento.servico }}</mat-panel-title>
+                <mat-panel-description>{{ agendamento.str_data }}</mat-panel-description>
+            </md-expansion-panel-header>
+            <p md-line>Serviço: {{ agendamento.servico }}</p>
+            <p md-line>Data: {{ agendamento.str_data }}</p>
+            <p md-line>Horario: {{ agendamento.horario }}</p>
+            <p md-line>Status: {{ agendamento.status }}</p>
+            <button *ngIf="agendamento.status == 'Confirmado'" md-raised-button color="accent" class="btn-cancelar" (click)="cancelar(agendamento)">Cancelar</button>
+        </md-expansion-panel>
+
+      <h2 md-subheader> Próximos </h2>
+        <md-expansion-panel [hideToggle]="false" *ngFor="let agendamento of agendamentosProximos">
+            <md-expansion-panel-header>
+                <mat-panel-title>{{ agendamento.servico }}</mat-panel-title>
+                <mat-panel-description>{{ agendamento.str_data }}</mat-panel-description>
+            </md-expansion-panel-header>
+            <p md-line>Serviço: {{ agendamento.servico }}</p>
+            <p md-line>Data: {{ agendamento.str_data }}</p>
+            <p md-line>Horario: {{ agendamento.horario }}</p>
+            <p md-line>Status: {{ agendamento.status }}</p>
+            <button *ngIf="agendamento.status == 'Confirmado'" md-raised-button color="accent" class="btn-cancelar" (click)="cancelar(agendamento)">Cancelar</button>
+        </md-expansion-panel>
+
+        <h2 md-subheader> Antigos </h2>
+        <md-expansion-panel [hideToggle]="false" *ngFor="let agendamento of agendamentosAntigos">
+            <md-expansion-panel-header>
+                <mat-panel-title>{{ agendamento.servico }}</mat-panel-title>
+                <mat-panel-description>{{ agendamento.str_data }}</mat-panel-description>
+            </md-expansion-panel-header>
+            <p md-line>Serviço: {{ agendamento.servico }}</p>
+            <p md-line>Data: {{ agendamento.str_data }}</p>
+            <p md-line>Horario: {{ agendamento.horario }}</p>
+            <p md-line>Status: {{ agendamento.status }}</p>
+        </md-expansion-panel>
+    </md-list>
+
+
+
+  <!-- </div> -->
 
 </div>

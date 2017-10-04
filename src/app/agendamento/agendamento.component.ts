@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AgendamentoService } from './agendamento.service';
 import { AuthService } from './../auth/auth.service';
 import { ServicoService } from './../servico/servico.service';
@@ -5,6 +6,7 @@ import { Servico } from './../servico/servico';
 import { HorarioService } from './../horario/horario.service';
 import { Component, OnInit } from '@angular/core';
 import { Horario } from '../horario/horario';
+import {MdSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-agendamento',
@@ -23,11 +25,14 @@ export class AgendamentoComponent implements OnInit {
   horario: Horario;
   servico: Servico;
 
+
   constructor(
     private _horarioService: HorarioService,
     private _servicoService: ServicoService,
     private _authService: AuthService,
-    private _agendamentoService: AgendamentoService
+    private _agendamentoService: AgendamentoService,
+    private _snackBar: MdSnackBar,
+    private _router: Router
   ) { }
 
   ngOnInit() {
@@ -58,6 +63,12 @@ export class AgendamentoComponent implements OnInit {
         resposta => {
           this.loading = false;
           this.buscarHorariosDisponiveis(new Date());
+          this._snackBar.open('Agendamento realizado com sucesso', 'visualizar',{
+            duration: 3000
+          }).onAction()
+          .subscribe(() => {
+            this._router.navigate(['/meus-agendamentos']);
+          });
         },
         erro => {
           console.log(erro);
@@ -113,4 +124,5 @@ export class AgendamentoComponent implements OnInit {
   changeDate(date){
     this.buscarHorariosDisponiveis(date._selected);
   }
+
 }

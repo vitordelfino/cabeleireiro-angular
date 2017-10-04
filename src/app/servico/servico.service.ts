@@ -10,7 +10,7 @@ export class ServicoService {
     //https://cabeleireiro-api.herokuapp.com/servicos/find'
     //http://localhost:3000/servicos/find'
     return this._http
-      .get('https://cabeleireiro-api.herokuapp.com/servicos/find')
+      .get('http://localhost:3000/servicos/find')
       .map(res => res.json())
       .toPromise();
   }
