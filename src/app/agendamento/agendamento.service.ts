@@ -9,7 +9,7 @@ export class AgendamentoService {
 
   salva(agendamento): Observable<any>{
     return this._http
-      .post('https://cabeleireiro-api.herokuapp.com/agendamento', agendamento)
+      .post('http://localhost:3000/agendamento', agendamento)
       .map(res => res.json())
       .catch(erro => {
         throw new Error(erro.message);

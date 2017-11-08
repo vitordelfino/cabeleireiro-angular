@@ -8,10 +8,10 @@ import { Observable } from 'rxjs/Observable';
 export class MeusAgendamentosService {
 
   constructor(private _http: Http) { }
-  //https://cabeleireiro-api.herokuapp.com/agendamento/clientid/${cliente.cpf}
+  //http://localhost:3000/agendamento/clientid/${cliente.cpf}
   findHoje(cliente: Cliente): Observable<any> {
     return this._http
-      .get(`https://cabeleireiro-api.herokuapp.com/agendamento/clientidhoje/${cliente.cpf}`)
+      .get(`http://localhost:3000/agendamento/clientidhoje/${cliente.cpf}`)
       .map(res => res.json())
       .catch(erro => {
         throw new Error(erro.message)
@@ -20,7 +20,7 @@ export class MeusAgendamentosService {
 
   findProximos(cliente: Cliente): Observable<any> {
     return this._http
-      .get(`https://cabeleireiro-api.herokuapp.com/agendamento/clientidproximos/${cliente.cpf}`)
+      .get(`http://localhost:3000/agendamento/clientidproximos/${cliente.cpf}`)
       .map(res => res.json())
       .catch(erro => {
         throw new Error(erro.message)
@@ -29,7 +29,7 @@ export class MeusAgendamentosService {
 
   findAntigos(cliente: Cliente): Observable<any> {
     return this._http
-      .get(`https://cabeleireiro-api.herokuapp.com/agendamento/clientidantigos/${cliente.cpf}`)
+      .get(`http://localhost:3000/agendamento/clientidantigos/${cliente.cpf}`)
       .map(res => res.json())
       .catch(erro => {
         throw new Error(erro.message)
@@ -38,7 +38,7 @@ export class MeusAgendamentosService {
 
   cancelar(agendamento: Agendamento): Observable<any> {
     return this._http
-      .delete(`https://cabeleireiro-api.herokuapp.com/agendamento/${agendamento.id}`)
+      .delete(`http://localhost:3000/agendamento/${agendamento.id}`)
       .map(res => res.json())
       .catch(erro => {
         throw new Error(erro.message)

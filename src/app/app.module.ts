@@ -21,6 +21,8 @@ import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/catch';
 import { MeusAgendamentosComponent } from './meus-agendamentos/meus-agendamentos.component';
 import { MeusAgendamentosService } from './meus-agendamentos/meus-agendamentos.service';
+import { CadastroComponent } from './cadastro/cadastro.component';
+import { CadastroService } from './cadastro/cadastro.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { MeusAgendamentosService } from './meus-agendamentos/meus-agendamentos.s
     LoginComponent,
     AppToolbarComponent,
     AgendamentoComponent,
-    MeusAgendamentosComponent
+    MeusAgendamentosComponent,
+    CadastroComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,7 @@ import { MeusAgendamentosService } from './meus-agendamentos/meus-agendamentos.s
     ReactiveFormsModule,
     HttpModule,
   ],
-  providers: [AuthService, AuthGuard, HorarioService, ServicoService, AgendamentoService, MeusAgendamentosService],
+  providers: [AuthService, AuthGuard, HorarioService, ServicoService, AgendamentoService, MeusAgendamentosService, CadastroService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

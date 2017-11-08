@@ -1,0 +1,33 @@
+<div class="conteudo">
+
+    <md-card>
+        <md-card-content>
+
+
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <h4>Preencha os campos para efetuar o cadastro</h4>
+
+            <md-input-container floatPlaceholder="auto" class="full-width-input">
+                <input mdInput placeholder="Nome" formControlName="nome" required>
+                <md-error *ngIf="isFieldInvalid('nome')">
+                  Por favor informe o nome
+                </md-error>
+            </md-input-container>
+
+            <md-input-container floatPlaceholder="auto" class="full-width-input">
+                <input mdInput formControlName="cpf" placeholder="cpf" required >
+                <md-error *ngIf="isFieldInvalid('cpf')">
+                  Por favor informe o cpf
+                </md-error>
+            </md-input-container>
+
+            <button md-raised-button color="primary" type="submit">Cadastrar</button>
+            <button md-raised-button routerLink="/" color="primary">Voltar</button>
+          </form>
+
+        </md-card-content>
+
+    </md-card>
+
+</div>
