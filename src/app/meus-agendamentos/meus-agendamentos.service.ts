@@ -38,7 +38,7 @@ export class MeusAgendamentosService {
 
   cancelar(agendamento: Agendamento): Observable<any> {
     return this._http
-      .delete(`http://localhost:3000/agendamento/${agendamento.id}`)
+      .delete(`http://localhost:3000/agendamento/${agendamento.id}/cancelando`)
       .map(res => res.json())
       .catch(erro => {
         throw new Error(erro.message)
